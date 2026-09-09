@@ -1,0 +1,29 @@
+# ---- C/C++ build products ----
+*.o
+*.obj
+*.d
+*.a
+*.so
+*.dylib
+a.out
+*.exe
+*.out
+
+# Compiled binaries in the in-class folders (no extension on macOS/Linux),
+# add names here as you create them
+main
+demo
+
+# Debug info (macOS)
+*.dSYM/
+
+# ---- Editor / IDE ----
+.vscode/
+.idea/
+*.swp
+*~
+.cache/
+compile_commands.json
+
+# ---- macOS ----
+.DS_Store
