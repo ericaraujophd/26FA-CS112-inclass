@@ -11,7 +11,13 @@ int main(){
     
     square_reference(var);
     cout << "After calling square_reference(): " << var << endl;
+    
+    square_ptr(&var);
+    cout << "After calling square_ptr(): " << var << endl;
 
-    // square_ptr(&var);
+    int x = 4;
+    test_noelle(x);
+    test_caden(4);
+
     return 0;
 }
