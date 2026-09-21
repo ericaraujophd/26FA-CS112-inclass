@@ -13,6 +13,7 @@ a.out
 # add names here as you create them
 main
 demo
+tests
 
 # Debug info (macOS)
 *.dSYM/
