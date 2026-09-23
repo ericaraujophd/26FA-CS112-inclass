@@ -1,6 +1,8 @@
 #ifndef PAIR_H
 #define PAIR_H
 
+#include<iostream>
+using namespace std;
 // Class Pair
 
 class Pair{
@@ -18,15 +20,23 @@ class Pair{
         // Pair p3(5,6);
         // int x = p3.getFirst();
         // cout << p3.getFirst() << endl;
-        int getFirst();
-        int getSecond();
+        int getFirst() const;
+        int getSecond() const;
+        void add(Pair &p2);
+
         // setters -> 
         // methods to modify my private attributes first and second
         void setFirst(int f);
         void setSecond(int s);
+
+        // overload the operator =
+        const Pair& operator=(Pair &p, Pair &q);
     private:
         int first;
         int second;
 };
+
+// important! it is outside of the class!
+ostream& operator<<(ostream &out, const Pair &p);
 
 #endif
