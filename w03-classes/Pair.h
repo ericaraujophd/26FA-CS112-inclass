@@ -3,8 +3,10 @@
 
 #include<iostream>
 using namespace std;
-// Class Pair
 
+typedef int Item;
+
+// Class Pair
 class Pair{
     public:
         // constructor
@@ -14,26 +16,26 @@ class Pair{
         // explicit-value constructor
         // Pair p(1,3);
         // Pair p2(1); // no such a constructor created. ERROR.
-        Pair(int f, int s);
+        Pair(Item f, Item s);
         // getters ->
         // methods to read my private attributes first and second
         // Pair p3(5,6);
         // int x = p3.getFirst();
         // cout << p3.getFirst() << endl;
-        int getFirst() const;
-        int getSecond() const;
+        Item getFirst() const;
+        Item getSecond() const;
         void add(Pair &p2);
 
         // setters -> 
         // methods to modify my private attributes first and second
-        void setFirst(int f);
-        void setSecond(int s);
+        void setFirst(Item f);
+        void setSecond(Item s);
 
         // overload the operator =
-        const Pair& operator=(Pair &p, Pair &q);
+        Pair& operator=(const Pair &p);
     private:
-        int first;
-        int second;
+        Item first;
+        Item second;
 };
 
 // important! it is outside of the class!

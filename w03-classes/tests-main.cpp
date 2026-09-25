@@ -61,8 +61,11 @@ TEST_CASE("Operator Overload", "[add, sub]"){
 
     SECTION("Operator ="){
         Pair p;
+        cout << p << endl;
+        
         Pair p1(6,9);
         p = p1;
+
 
         REQUIRE(p.getFirst() == 6);
         REQUIRE(p.getSecond() == 9);

@@ -2,31 +2,31 @@
 
 // default constructor
 Pair::Pair(){
-    first = 0;
-    second = 0;
+    first = Item();
+    second = Item();
 }
 
 // explicit-value constructor
-Pair::Pair(int f, int s){
+Pair::Pair(Item f, Item s){
     first = f;
     second = s;
 }
 
 // getters
-int Pair::getFirst() const {
+Item Pair::getFirst() const {
     return first;
 }
 
-int Pair::getSecond() const {
+Item Pair::getSecond() const {
     return second;
 }
 
 // setters
-void Pair::setFirst(int f){
+void Pair::setFirst(Item f){
     first = f;
 }
 
-void Pair::setSecond(int s){
+void Pair::setSecond(Item s){
     second = s;
 }
 
@@ -35,8 +35,10 @@ void Pair::add(Pair &p2){
     second += p2.getSecond();
 }
 
-const Pair& operator=(Pair &p, Pair &q){
-
+Pair& Pair::operator=(const Pair &p){
+    first = p.first;
+    second = p.second;
+    return *this;
 }
 
 // operator overload for << passing a Pair
