@@ -1,51 +1,48 @@
 #include "PyList.h"
 
 // default constructor
-PyList::PyList(){
+PyList::PyList() {
     mySize = 0;
     myCapacity = 0;
     myArray = nullptr;
 }
 
 // Append
-void PyList::append(Item it){
-    if (mySize == 0){
-        myArray = new Item[1];
-        myCapacity = 1;
-        mySize = 1;
-        myArray[0] = it;
-    }
-    // array is not empty!!!!!!
-    else{
-        myCapacity++;
-        mySize++;
-        // I've incremented my capacity and size!!!
-        Item *tempArray = new Item[myCapacity];
+void PyList::append(Item it) {
+    if (mySize == myCapacity) {
+        // adjusting the new lenght of the array using myCapacity
+        myCapacity = (myCapacity == 0) ? 1 : myCapacity * 2;
+        // does exactly what is below:
+        // if(myCapacity == 0){
+        //     myCapacity = 1;
+        // }
+        // else {
+        //     myCapacity *= 2;
+        // }
 
-        for(int i=0; i < myCapacity-1; i++){
-            tempArray[i] = myArray[i];
+        Item* bigger = new Item[myCapacity];
+
+        for (int i = 0; i < mySize; i++) {
+            bigger[i] = myArray[i];
         }
-        tempArray[myCapacity-1] = it;
-
-        delete []myArray;
-
-        myArray = tempArray;
-
-
+        delete [] myArray;
+        myArray = bigger;
     }
+    myArray[mySize] = it;
+    mySize++;
 
 }
 
 // getters
 
-int PyList::getSize() const{
+int PyList::getSize() const {
     return mySize;
 }
 
-int PyList::getCapacity() const{
+int PyList::getCapacity() const {
     return myCapacity;
 }
 
-Item PyList::getIndex(int ix) const{
+Item PyList::getIndex(int ix) const {
     return myArray[ix];
 }
