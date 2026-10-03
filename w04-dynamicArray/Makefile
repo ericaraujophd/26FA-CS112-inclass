@@ -1,6 +1,7 @@
 # Makefile for the Vec class + Catch2 tests
 #   make        -> build ./tests
 #   make test   -> build and run the tests
+#   make sanitize -> rebuild with AddressSanitizer and run the tests
 #   make clean  -> remove build products
 
 CXX      := g++
@@ -28,8 +29,13 @@ test: $(TARGET)
 test-verbose: $(TARGET)
 	./$(TARGET) --success
 
+# Rebuild from scratch with AddressSanitizer and run the tests
+sanitize: clean
+	$(MAKE) CXXFLAGS="$(CXXFLAGS) -fsanitize=address"
+	./$(TARGET)
+
 clean:
 	rm -f $(OBJS) $(TARGET)
 	rm -rf $(TARGET).dSYM
 
-.PHONY: all test test-verbose clean
+.PHONY: all test test-verbose sanitize clean

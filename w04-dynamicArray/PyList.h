@@ -6,12 +6,16 @@ typedef int Item;
 
 class PyList{
     public:
-        PyList();
+        PyList(); // default constructor
+        PyList(const PyList &orig); // copy constructor
+        ~PyList(); // destructor
         void append(Item it);
         // getters
         int getSize() const;
         int getCapacity() const;
-        Item getIndex(int ix) const;
+        Item& getIndex(int ix) const;
+
+        Item& operator[](int ix);
 
     private:
         Item *myArray;
