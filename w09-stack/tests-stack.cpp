@@ -1,8 +1,10 @@
 #define CATCH_CONFIG_MAIN
 #include "Stack.h"
+#include "Queue.h"
 #include "catch.hpp"
 
 #include <stdexcept>
+#include <string>
 
 using namespace std;
 
@@ -91,4 +93,57 @@ TEST_CASE("Stack after being emptied", "[stack][reuse]") {
         REQUIRE(!s.isEmpty());
     }
 
+}
+
+TEST_CASE("Queues"){
+    SECTION("Constructor"){
+        Queue<int> q;
+        REQUIRE(q.getSize() == 0);
+    }
+
+    SECTION("Methods"){
+        Queue<int> q;
+        q.add(1);
+        q.add(2);
+        REQUIRE(q.getSize() == 2);
+        REQUIRE(q.peekFront() == 1);
+        REQUIRE(q.peekBack() == 2);
+    }
+
+    SECTION("Making students have nightmares"){
+        Queue<Stack<string>> q;
+
+        Stack<string> s1;
+        Stack<string> s2;
+        Stack<string> s3;
+
+        s1.push("Catelyn");
+        s1.push("Lucia");
+        s1.push("Clara");
+        s1.push("Ana Clara");
+        s1.push("Kekeli");
+        s1.push("Noelle");
+        
+        s2.push("Samuel");
+        s2.push("Micaiah");
+        s2.push("Marshall");
+        
+        s3.push("Caden");
+        s3.push("Moses");
+        s3.push("Elijah");
+        s3.push("Kwesi");
+
+        q.add(s1);
+        q.add(s2);
+        q.add(s3);
+
+        REQUIRE(q.peekFront().peekTop() == "Noelle");
+        REQUIRE(q.peekBack().peekTop() == "Kwesi");
+        
+        q.peekBack().pop();
+        REQUIRE(q.peekBack().peekTop() == "Elijah");
+
+
+
+    }
 }
